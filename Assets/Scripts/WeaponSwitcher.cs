@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class WeaponSwitcher : MonoBehaviour
 {
+                int weaponLength;
+
     [SerializeField] int current = 0;
     void Start()
     {
         SetWeaponActive();
+        
     }
 
     void Update() {
         int previous = current;
-
         ProcessKeyInput();
         if (previous != current) {
             SetWeaponActive();
@@ -24,6 +26,7 @@ public class WeaponSwitcher : MonoBehaviour
         int weaponIndex = 0;
         foreach (Transform weapon in transform)
         {
+          weaponLength = transform.childCount;
             if (weaponIndex == current) {
                 weapon.gameObject.SetActive(true);
             } else {
@@ -32,15 +35,13 @@ public class WeaponSwitcher : MonoBehaviour
             weaponIndex++;
         }
     }
-
     void ProcessKeyInput() 
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1)) {
-            current = 0;
-        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            current = 1;
-        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            current = 2;
+        if(Input.GetKeyDown(KeyCode.RightShift)) {
+            current++;
+            if (current == weaponLength) {
+                current = 0;
+        } 
         }
     }
 }

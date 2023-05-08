@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-  PlayerHealth target;
+    PlayerHealth target;
    [SerializeField] float damage = 25f;
 
     void Start()
