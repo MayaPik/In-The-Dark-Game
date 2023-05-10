@@ -16,5 +16,6 @@ public class EnemyAttack : MonoBehaviour
     {
         if (!target) return;
         target.GetComponent<PlayerHealth>().SetPlayerLife(damage);
+        target.GetComponent<DispayDamage>().ShowDamage();
     }
 }
